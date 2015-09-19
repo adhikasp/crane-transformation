@@ -63,7 +63,7 @@ namespace CraneTranformation {
 			this->CraneCanvas->BackColor = System::Drawing::Color::White;
 			this->CraneCanvas->Location = System::Drawing::Point(12, 12);
 			this->CraneCanvas->Name = L"CraneCanvas";
-			this->CraneCanvas->Size = System::Drawing::Size(260, 237);
+			this->CraneCanvas->Size = System::Drawing::Size(754, 471);
 			this->CraneCanvas->TabIndex = 0;
 			this->CraneCanvas->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &CraneWindow::CraneCanvas_Paint);
 			// 
@@ -71,7 +71,7 @@ namespace CraneTranformation {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->ClientSize = System::Drawing::Size(778, 495);
 			this->Controls->Add(this->CraneCanvas);
 			this->Name = L"CraneWindow";
 			this->Text = L"CraneTranformation";
