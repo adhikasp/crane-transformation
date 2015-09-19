@@ -17,6 +17,7 @@ namespace CraneTranformation
 		array<Point>^ get_points();
 
 		void translate(Point^ delta);
+		void rotate(Point^ reference, float degree);
 
 		void printPoint();
 

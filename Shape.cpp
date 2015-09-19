@@ -31,4 +31,29 @@ namespace CraneTranformation
 			System::Console::WriteLine(point->X + " " + point->Y);
 		}
 	}
+
+	void Shape::rotate(Point^ reference, float degree)
+	{
+		Point^ tmp;
+		double radian = degree * 2 * Math::PI / 180;
+		for (int i = 0; i < points->Length; i++) {
+			tmp = points[i];
+			
+			// 1. Translate to 0, 0
+			tmp->X -= reference->X;
+			tmp->Y -= reference->Y;
+
+			// 2. Rotate
+			tmp->X = (int)( tmp->X * Math::Cos(radian) - tmp->Y * Math::Sin(radian) );
+			tmp->Y = (int)( tmp->X * Math::Sin(radian) + tmp->Y * Math::Cos(radian) );
+
+			// 3. Tranlate back
+			tmp->X += reference->X;
+			tmp->Y += reference->Y;
+
+			// Save to shape
+			points[i].X = tmp->X;
+			points[i].Y = tmp->Y;
+		}
+	}
 }
