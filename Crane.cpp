@@ -28,17 +28,19 @@ namespace CraneTranformation
 		};
 
 		array<Point>^ circlePoint = gcnew array<Point>(CIRCLE_POINT_ACCURATION);
-		int r = 20;
-		int theta = 0;
-		int i = 0;
-		while (theta < 360) {  
-			float rotation = theta * 2 * Math::PI / 360;
-			int tmpx = (x + 15) + r*Math::Cos(rotation);
-			int tmpy = (y + 40) + r*Math::Sin(rotation);
-			circlePoint[i] = Point(tmpx, tmpy);
-			i += 1;
-			theta += 360 / CIRCLE_POINT_ACCURATION;	 
-			System::Console::WriteLine(i);
+		// Anonymous namespace for automatic variable garbage dump
+		{		   
+			int r = 20;
+			int theta = 0;
+			int i = 0;
+			while (theta < 360) {
+				double rotation = theta * 2 * Math::PI / 360;
+				int tmpx = (int)((x + 15) + r*Math::Cos(rotation));
+				int tmpy = (int)((y + 40) + r*Math::Sin(rotation));
+				circlePoint[i] = Point(tmpx, tmpy);
+				i += 1;
+				theta += 360 / CIRCLE_POINT_ACCURATION;
+			}
 		}
 
 		this->body = gcnew Component::Body(pointBody);
