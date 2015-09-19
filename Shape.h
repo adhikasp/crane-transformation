@@ -16,6 +16,10 @@ namespace CraneTranformation
 		Shape(array<Point>^ shapePoint); 
 		array<Point>^ get_points();
 
+		void translate(Point^ delta);
+
+		void printPoint();
+
 	};
 }
 
