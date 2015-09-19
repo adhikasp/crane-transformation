@@ -35,8 +35,8 @@ namespace CraneTranformation
 			int i = 0;
 			while (theta < 360) {
 				double rotation = theta * 2 * Math::PI / 360;
-				int tmpx = (int)((x + 15) + r*Math::Cos(rotation));
-				int tmpy = (int)((y + 40) + r*Math::Sin(rotation));
+				int tmpx = (int)((x + 15) + r*Math::Cos(rotation) + 0.5);
+				int tmpy = (int)((y + 40) + r*Math::Sin(rotation) + 0.5);
 				circlePoint[i] = Point(tmpx, tmpy);
 				i += 1;
 				theta += 360 / CIRCLE_POINT_ACCURATION;

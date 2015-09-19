@@ -44,8 +44,8 @@ namespace CraneTranformation
 			tmp->Y -= reference->Y;
 
 			// 2. Rotate
-			tmp->X = (int)( tmp->X * Math::Cos(radian) - tmp->Y * Math::Sin(radian) );
-			tmp->Y = (int)( tmp->X * Math::Sin(radian) + tmp->Y * Math::Cos(radian) );
+			tmp->X = (int)( tmp->X * Math::Cos(radian) - tmp->Y * Math::Sin(radian) + 0.5 );
+			tmp->Y = (int)( tmp->X * Math::Sin(radian) + tmp->Y * Math::Cos(radian) + 0.5 );
 
 			// 3. Tranlate back
 			tmp->X += reference->X;
