@@ -42,12 +42,12 @@ namespace CraneTranformation
 		}
 
 		this->body = gcnew Component::Body(pointBody);
-		this->wheel    = gcnew Component::Wheel(circlePoint);
-		//foreArm  = gcnew Component::ForeArm();
+		this->wheel = gcnew Component::Wheel(circlePoint);
 		this->upperArm = gcnew Component::UpperArm(pointUpperArm);
+		//foreArm  = gcnew Component::ForeArm();
 		//claw     = gcnew Component::Claw();
 
-		limb = gcnew array<Component::Limb^> { body, upperArm, wheel };
+		limb = gcnew array<Component::Limb^> { wheel, body, upperArm};
 		for (int i = 0; i < limb->Length; i++) {
 			renderer->addShape(limb[i]->getShape());
 		}
