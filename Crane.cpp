@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#define CIRCLE_POINT_ACCURATION 12
+#define CIRCLE_POINT_ACCURATION 12		   // Must be a factor of 360
 
 namespace CraneTranformation
 {
@@ -21,9 +21,9 @@ namespace CraneTranformation
 			Point(x+40, y-10) 
 		};
 		array<Point>^ pointUpperArm = {
-			Point(x + 10, y-5), 
-			Point(x + 20, y-5),
-			Point(x + 20, y-40),
+			Point(x+10, y-5), 
+			Point(x+20, y-5),
+			Point(x+20, y-40),
 			Point(x+10, y-40)
 		};
 
