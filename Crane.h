@@ -16,8 +16,19 @@ namespace CraneTranformation
 		Component::Limb^ upperArm;
 		Component::Limb^     claw;
 
+		array<Component::Limb^>^ limb;
+
 	public:
 		Crane(CraneTranformation::RenderEngine^ renderer);
+
+		void move(int deltaX);
+		
+		/*
+		void rotateUpperArm();
+		void rotateForeArm();
+		void rotateClaw();
+		void clapClaw();
+		*/
 	};
 
 }

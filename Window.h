@@ -28,7 +28,6 @@ namespace CraneTranformation {
 
 			this->renderer = gcnew CraneTranformation::RenderEngine(this->CraneCanvas);
 			this->crane    = gcnew Crane(this->renderer);
-
 		}
 
 	protected:
