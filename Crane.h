@@ -22,6 +22,7 @@ namespace CraneTranformation
 		static const double MAX_UPPERARM_ROTATION = 30;
 		static const double MIN_UPPERARM_ROTATION = -30;
 
+		double currentForeArmRotation = 0;
 		static const double MAX_FOREARM_ROTATION = 30;
 		static const double MIN_FOREARM_ROTATION = -30;
 
@@ -33,9 +34,9 @@ namespace CraneTranformation
 
 		void move(int deltaX);		 		
 		void rotateUpperArm(double degree);
+		void rotateForeArm(double degree);
 
 		/*
-		void rotateForeArm(double degree);
 		void rotateClaw(double degree);
 		void clapClaw();
 		*/

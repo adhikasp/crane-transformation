@@ -33,7 +33,8 @@ namespace CraneTranformation {
 		public ref class ForeArm : public Limb
 		{
 		public:
-			ForeArm(array<Point>^ shapePoint); 
+			Point^ jointPoint;
+			ForeArm(array<Point>^ shapePoint, Point^ jointPoint);
 
 		};
 

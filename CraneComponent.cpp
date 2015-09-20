@@ -34,9 +34,9 @@ namespace CraneTranformation {	namespace Component
 	}
 
 
-	CraneTranformation::Component::ForeArm::ForeArm(array<Point>^ shapePoint) : Limb(shapePoint)
+	CraneTranformation::Component::ForeArm::ForeArm(array<Point>^ shapePoint, Point^ jointPoint) : Limb(shapePoint)
 	{
-
+		this->jointPoint = jointPoint;
 	}
 
 
