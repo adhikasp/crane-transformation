@@ -89,6 +89,9 @@ namespace CraneTranformation
 
 	void Crane::rotateUpperArm(double degree)
 	{
+		if (MIN_UPPERARM_ROTATION < currentUpperArmRotation + degree || currentUpperArmRotation + degree > MAX_UPPERARM_ROTATION){
+			return;
+		}
 		currentUpperArmRotation += degree;
 		Point^ reference = static_cast<Component::UpperArm^>(upperArm)->jointPoint;
 		array<Component::Limb^>^ movingLimb = gcnew array<CraneTranformation::Component::Limb^> { upperArm, foreArm, claw };
@@ -98,7 +101,10 @@ namespace CraneTranformation
 	}
 
 	void Crane::rotateForeArm(double degree)
-	{
+	{			
+		if (MIN_FOREARM_ROTATION < currentUpperArmRotation + degree || currentUpperArmRotation + degree > MAX_FOREARM_ROTATION){
+			return;
+		}
 		currentForeArmRotation += degree;
 		Point^ reference = static_cast<Component::UpperArm^>(foreArm)->jointPoint;
 		array<Component::Limb^>^ movingLimb = gcnew array<CraneTranformation::Component::Limb^> { foreArm, claw };
