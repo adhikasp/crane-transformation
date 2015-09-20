@@ -16,7 +16,7 @@ namespace CraneTranformation
 	private:	  
 		System::Windows::Forms::Panel^ canvas;
 		List<Shape^>^ queue;
-		Pen^ renderPen = gcnew Pen(Color::Black, 3.0f);
+		Pen^ renderPen = gcnew Pen(Color::Black, 1.0f);
 
 
 	public:																  

@@ -18,15 +18,25 @@ namespace CraneTranformation
 
 		array<Component::Limb^>^ limb;
 
+		double currentUpperArmRotation = 0;
+		static const double MAX_UPPERARM_ROTATION = 30;
+		static const double MIN_UPPERARM_ROTATION = -30;
+
+		static const double MAX_FOREARM_ROTATION = 30;
+		static const double MIN_FOREARM_ROTATION = -30;
+
+		static const double MAX_CLAW_ROTATION = 30;
+		static const double MIN_CLAW_ROTATION = -30;
+
 	public:
 		Crane(CraneTranformation::RenderEngine^ renderer);
 
-		void move(int deltaX);
-		
+		void move(int deltaX);		 		
+		void rotateUpperArm(double degree);
+
 		/*
-		void rotateUpperArm();
-		void rotateForeArm();
-		void rotateClaw();
+		void rotateForeArm(double degree);
+		void rotateClaw(double degree);
 		void clapClaw();
 		*/
 	};

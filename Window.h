@@ -19,7 +19,11 @@ namespace CraneTranformation {
 	private:
 		System::Windows::Forms::Panel^    CraneCanvas;
 		CraneTranformation::RenderEngine^ renderer;
-		CraneTranformation::Crane^        crane;
+	private: System::Windows::Forms::Button^  moveRight;
+	private: System::Windows::Forms::Button^  moveLeft;
+
+
+			 CraneTranformation::Crane^        crane;
 
 	public:
 		CraneWindow(void)
@@ -56,6 +60,8 @@ namespace CraneTranformation {
 		void InitializeComponent(void)
 		{
 			this->CraneCanvas = (gcnew System::Windows::Forms::Panel());
+			this->moveRight = (gcnew System::Windows::Forms::Button());
+			this->moveLeft = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// CraneCanvas
@@ -67,11 +73,33 @@ namespace CraneTranformation {
 			this->CraneCanvas->TabIndex = 0;
 			this->CraneCanvas->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &CraneWindow::CraneCanvas_Paint);
 			// 
+			// moveRight
+			// 
+			this->moveRight->Location = System::Drawing::Point(93, 513);
+			this->moveRight->Name = L"moveRight";
+			this->moveRight->Size = System::Drawing::Size(75, 23);
+			this->moveRight->TabIndex = 1;
+			this->moveRight->Text = L"Kanan";
+			this->moveRight->UseVisualStyleBackColor = true;
+			this->moveRight->Click += gcnew System::EventHandler(this, &CraneWindow::button1_Click);
+			// 
+			// moveLeft
+			// 
+			this->moveLeft->Location = System::Drawing::Point(12, 513);
+			this->moveLeft->Name = L"moveLeft";
+			this->moveLeft->Size = System::Drawing::Size(75, 23);
+			this->moveLeft->TabIndex = 2;
+			this->moveLeft->Text = L"Kiri";
+			this->moveLeft->UseVisualStyleBackColor = true;
+			this->moveLeft->Click += gcnew System::EventHandler(this, &CraneWindow::button1_Click_1);
+			// 
 			// CraneWindow
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(778, 495);
+			this->ClientSize = System::Drawing::Size(778, 565);
+			this->Controls->Add(this->moveLeft);
+			this->Controls->Add(this->moveRight);
 			this->Controls->Add(this->CraneCanvas);
 			this->Name = L"CraneWindow";
 			this->Text = L"CraneTranformation";
@@ -82,6 +110,14 @@ namespace CraneTranformation {
 	private: 
 		System::Void CraneCanvas_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 			this->renderer->render(sender, e);
+		} 
+		System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+			this->crane->move(20);
+			CraneCanvas->Invalidate();
+		}
+		System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
+			this->crane->move(-20);
+			CraneCanvas->Invalidate();
 		}
 	};
 }
