@@ -66,7 +66,7 @@ namespace CraneTranformation
 
 		this->body     = gcnew Component::Body(bodyPoint);
 		this->wheel    = gcnew Component::Wheel(circlePoint);
-		this->upperArm = gcnew Component::UpperArm(upperArmPoint);
+		this->upperArm = gcnew Component::UpperArm(upperArmPoint, Point(x+65, y+131));
 		this->foreArm  = gcnew Component::ForeArm(foreArmPoint);
 		this->claw     = gcnew Component::Claw(clawPoint);
 
@@ -81,11 +81,20 @@ namespace CraneTranformation
 		for (int i = 0; i < limb->Length; i++) {
 			limb[i]->getShape()->translate(Point(deltaX, 0));
 		}
+		array<Component::Limb^>^ limbWithJoint = gcnew array<CraneTranformation::Component::Limb^> { upperArm };
+		for each (Component::Limb^ limb in limbWithJoint) {
+			static_cast<Component::UpperArm^>(upperArm)->jointPoint->X += deltaX;
+		}
 	}
 
 	void Crane::rotateUpperArm(double degree)
 	{
-		
+		currentUpperArmRotation += degree;
+		Point^ reference = static_cast<Component::UpperArm^>(upperArm)->jointPoint;
+		array<Component::Limb^>^ movingLimb = gcnew array<CraneTranformation::Component::Limb^> { upperArm, foreArm, claw };
+		for each (Component::Limb^ limb in movingLimb) {
+			limb->getShape()->rotate(reference, 10);
+		}
 	}
 
 }

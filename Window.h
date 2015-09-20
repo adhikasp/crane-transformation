@@ -112,11 +112,11 @@ namespace CraneTranformation {
 			this->renderer->render(sender, e);
 		} 
 		System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-			this->crane->move(20);
+			this->crane->move(10);
 			CraneCanvas->Invalidate();
 		}
 		System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
-			this->crane->move(-20);
+			this->crane->move(-10);
 			CraneCanvas->Invalidate();
 		}
 	};

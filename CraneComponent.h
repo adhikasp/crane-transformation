@@ -10,9 +10,11 @@ namespace CraneTranformation {
 		{
 		private:
 			CraneTranformation::Shape^ shape;
+			CraneTranformation::Shape^ originalShape;
 		public:
 			Limb(array<Point>^ shapePoint);	  
 			Shape^ getShape();
+			Shape^ getOriginalShape();
 		};
 
 		public ref class Body : public Limb
@@ -24,7 +26,8 @@ namespace CraneTranformation {
 		public ref class UpperArm : public Limb
 		{
 		public:
-			UpperArm(array<Point>^ shapePoint);
+			Point^ jointPoint;
+			UpperArm(array<Point>^ shapePoint, Point^ jointPoint);
 		};
 
 		public ref class ForeArm : public Limb

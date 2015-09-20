@@ -7,11 +7,18 @@ namespace CraneTranformation {	namespace Component
 	CraneTranformation::Component::Limb::Limb(array<Point>^ shapePoint)
 	{
 		this->shape = gcnew CraneTranformation::Shape(shapePoint);
+		this->originalShape = gcnew CraneTranformation::Shape(shapePoint);
 	}
 
 	Shape^ CraneTranformation::Component::Limb::getShape()
 	{
+		this->shape = this->originalShape;
 		return this->shape;
+	}
+
+	Shape^ CraneTranformation::Component::Limb::getOriginalShape()
+	{
+		return this->originalShape;
 	}
 
 
@@ -21,9 +28,9 @@ namespace CraneTranformation {	namespace Component
 	}
 
 	
-	CraneTranformation::Component::UpperArm::UpperArm(array<Point>^ shapePoint) : Limb(shapePoint)
+	CraneTranformation::Component::UpperArm::UpperArm(array<Point>^ shapePoint, Point^ jointPoint) : Limb(shapePoint)
 	{
-
+		this->jointPoint = jointPoint;
 	}
 
 
