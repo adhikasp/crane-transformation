@@ -78,7 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Utility.cpp" />
     <ClCompile Include="RenderEngine.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Crane.cpp" />
@@ -89,6 +89,7 @@
   <ItemGroup>
     <ClInclude Include="Crane.h" />
     <ClInclude Include="CraneComponent.h" />
+    <ClInclude Include="Utility.h" />
     <ClInclude Include="RenderEngine.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Window.h">

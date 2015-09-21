@@ -2,6 +2,7 @@
 #include "CraneComponent.h"
 #include "RenderEngine.h"
 #include "CraneComponent.h"
+#include "Utility.cpp"
 
 #include <vector>
 
@@ -81,35 +82,40 @@ namespace CraneTranformation
 		for (int i = 0; i < limb->Length; i++) {
 			limb[i]->getShape()->translate(Point(deltaX, 0));
 		}
-		array<Component::Limb^>^ limbWithJoint = gcnew array<CraneTranformation::Component::Limb^> { upperArm };
+
+		array<Component::Limb^>^ limbWithJoint = gcnew array<CraneTranformation::Component::Limb^> { upperArm, foreArm };
 		for each (Component::Limb^ limb in limbWithJoint) {
-			static_cast<Component::UpperArm^>(upperArm)->jointPoint->X += deltaX;
+			static_cast<Component::UpperArm^>(limb)->jointPoint->X += deltaX;
 		}
 	}
 
 	void Crane::rotateUpperArm(double degree)
 	{
-		if (MIN_UPPERARM_ROTATION < currentUpperArmRotation + degree || currentUpperArmRotation + degree > MAX_UPPERARM_ROTATION){
+		if (MIN_UPPERARM_ROTATION > currentUpperArmRotation + degree || currentUpperArmRotation + degree > MAX_UPPERARM_ROTATION){
 			return;
 		}
+
 		currentUpperArmRotation += degree;
 		Point^ reference = static_cast<Component::UpperArm^>(upperArm)->jointPoint;
 		array<Component::Limb^>^ movingLimb = gcnew array<CraneTranformation::Component::Limb^> { upperArm, foreArm, claw };
 		for each (Component::Limb^ limb in movingLimb) {
-			limb->getShape()->rotate(reference, 10);
+			limb->getShape()->rotate(reference, degree);
 		}
+
+		// Moving other limb joint point for syncing
+		static_cast<Component::ForeArm^>(foreArm)->jointPoint = Utility::rotate(static_cast<Component::ForeArm^>(foreArm)->jointPoint, reference, degree);
 	}
 
 	void Crane::rotateForeArm(double degree)
 	{			
-		if (MIN_FOREARM_ROTATION < currentUpperArmRotation + degree || currentUpperArmRotation + degree > MAX_FOREARM_ROTATION){
+		if (MIN_FOREARM_ROTATION > currentForeArmRotation + degree || currentForeArmRotation + degree > MAX_FOREARM_ROTATION){
 			return;
 		}
 		currentForeArmRotation += degree;
-		Point^ reference = static_cast<Component::UpperArm^>(foreArm)->jointPoint;
+		Point^ reference = static_cast<Component::ForeArm^>(foreArm)->jointPoint;
 		array<Component::Limb^>^ movingLimb = gcnew array<CraneTranformation::Component::Limb^> { foreArm, claw };
 		for each (Component::Limb^ limb in movingLimb) {
-			limb->getShape()->rotate(reference, 10);
+			limb->getShape()->rotate(reference, degree);
 		}
 	}
 

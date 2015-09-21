@@ -50,13 +50,12 @@ namespace CraneTranformation
 		for (int i = 0; i < points->Length; i++) {
 			tmp = points[i];
 			
-			tmp->X = int( Math::Cos(radian) * (points[i].X - reference->X) - Math::Sin(radian) * (points[i].Y - reference->Y) + reference->X );
-			tmp->Y = int( Math::Sin(radian) * (points[i].X - reference->X) + Math::Cos(radian) * (points[i].Y - reference->Y) + reference->Y );
+			tmp->X = int( Math::Cos(radian) * (points[i].X - reference->X) - Math::Sin(radian) * (points[i].Y - reference->Y) + reference->X + 0.5 );
+			tmp->Y = int( Math::Sin(radian) * (points[i].X - reference->X) + Math::Cos(radian) * (points[i].Y - reference->Y) + reference->Y + 0.5 );
 
 			// Save to shape
 			points[i].X = tmp->X;
 			points[i].Y = tmp->Y;
 		}
-		System::Console::WriteLine(reference->X + " " + reference->Y);
 	}
 }
